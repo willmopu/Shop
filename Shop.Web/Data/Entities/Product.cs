@@ -30,6 +30,20 @@
         public double Stock { get; set; }
 
         public User User { get; set; }
+
+        public string ImageFullpath
+        {
+            get
+            {
+                if(string.IsNullOrEmpty(this.ImageUrl))
+                {
+                    return null;
+                }
+
+                return $"https://shopwill.azurewebsites.net{this.ImageUrl.Substring(1)}";
+                
+            }
+        }
     }
 
 }
