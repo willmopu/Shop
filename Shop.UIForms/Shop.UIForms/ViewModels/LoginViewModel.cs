@@ -13,6 +13,12 @@
 
         public ICommand LoginCommand => new RelayCommand(Login);
 
+        public LoginViewModel()
+        {
+            this.Email = "williamme0703@gmail.com";
+            this.Password = "123456";
+        }
+
         private async void Login()
         {
             if(string.IsNullOrEmpty(this.Email))
@@ -30,7 +36,19 @@
                     "You must enter a password.",
                     "Accept");
                 return;
+
             }
+
+            if (!this.Email.Equals("williamme0703@gmail.com") || !this.Password.Equals("123456"))
+
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "YUser or password wrong.",
+                    "Accept");
+                return;
+            }
+
             await Application.Current.MainPage.DisplayAlert(
                     "Ok",
                     "Fuck yeah!!!",
